@@ -1,4 +1,4 @@
-## ⚡🖥️ Atajos de Productividad para Navegación y Windows
+## ⚡🖥️ MIS HERRAMIENTAS DE PRODUCTIVIDAD
 
 Este proyecto combina un *script* de AutoHotkey (AHK) y un archivo de configuración para la extensión SurfingKeys para optimizar la navegación en Brave/Chrome y mejorar la interacción general con Windows mediante atajos de teclado personalizados.
 
