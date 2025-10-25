@@ -109,3 +109,9 @@ Puedes editar los tuyos en el archivo surfingkeysconfig.
 * **Scroll Suave** activado (`settings.smoothScroll = true`).
 * **Tamaño de Paso de Scroll** establecido en 180, cambiar valor para mas rapido o mas lento (`settings.scrollStepSize = 180`).
 
+
+---
+
+Este proyecto es apto para mis necesidades, puede que para las tuyas necesites editarlo, eres libre de usarlo y editarlo. 
+
+⭐⭐⭐ Disfrutalo y espero que te sea útil! ⭐⭐⭐
