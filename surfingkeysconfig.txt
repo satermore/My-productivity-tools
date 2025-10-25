@@ -1,0 +1,182 @@
+api.unmap('w');
+
+// Habilita debug para ver logs en consola
+settings.debug = true;
+
+// SCROLL OPTIONS
+settings.smoothScroll = true;
+settings.scrollStepSize = 180;
+
+
+
+// Navegación historial
+api.unmap('<');
+api.unmap('>');
+api.mapkey('<', '← Atrás en el historial', () => history.back());
+api.mapkey('>', '→ Adelante en el historial', () => history.forward());
+
+// Marcadores rápidos
+function openSite(key, description, url) {
+    api.mapkey(key, description, () => window.open(url, '_blank'));
+}
+openSite(',y', 'Open YouTube', 'https://www.youtube.com/');
+openSite(',t', 'Open Twitter', 'https://x.com/home');
+openSite(',w', 'Open WhatsApp Web', 'https://web.whatsapp.com/');
+openSite(',c', 'Open ChatGPT', 'https://chatgpt.com/');
+openSite(',i', 'Open Instagram', 'https://www.instagram.com/');
+openSite(',m', 'Open Gmail', 'https://mail.google.com/mail/u/0/');
+openSite(',g', 'Open Gemini', 'https://gemini.google.com/app?hl=es-ES');
+openSite(',r', 'Open Reddit', 'https://www.reddit.com/');
+
+
+// Desmapea 'h' y 'hh' para evitar cualquier conflicto
+api.unmap('h');
+api.unmap('hh');
+
+// Mapea 'hh' para scroll al fondo
+api.mapkey('hh', 'Scroll to bottom of the page', () => {
+    console.log('Intentando scrollear al fondo con hh');
+    const scrollableElement = document.scrollingElement || document.documentElement || document.body;
+    window.scrollTo({
+        top: scrollableElement.scrollHeight,
+        behavior: 'smooth'
+    });
+}, { repeatIgnore: true });
+
+// Unmaps (comenta si rompen algo más)
+
+api.unmap('t');
+api.unmap('d');
+api.unmap('c');
+api.unmap('m');
+api.unmap('q');
+
+api.map('d', 'j');
+
+// Desmapea la tecla 'F' para evitar conflictos con su comportamiento predeterminado
+api.unmap('F');
+
+// Mapea 'F' para mostrar hints y abrir enlaces en una nueva pestaña (en segundo plano)
+api.mapkey('F', 'Open link in new tab (background)', function() {
+    api.Hints.create("", function(element) {
+        window.open(element.href, '_blank');
+    });
+});
+
+
+ // -------------------------------------------------------------------------------------------------------------
+    // Tecla . -> quitar foco y permitir scroll
+    // -------------------------------------------------------------------------------------------------------------
+api.unmap('.');
+(function() {
+    if (typeof api === 'undefined' || !api.mapkey) {
+        console.warn('[SurfingKeys] API no encontrada. Asegúrate de que Surfingkeys está activo.');
+        return;
+    }
+
+    try { api.unmap('.'); } catch(e){}
+
+    api.mapkey('.', 'Quitar foco y enfocar scroll principal', function() {
+        try {
+            // 1) Blur del elemento activo si es input/textarea o contentEditable
+            const active = document.activeElement;
+            if (active) {
+                try {
+                    const tag = (active.tagName || '').toUpperCase();
+                    if (tag === 'INPUT' || tag === 'TEXTAREA' || active.isContentEditable) {
+                        active.blur();
+                    } else {
+                        active.blur && active.blur();
+                    }
+                } catch(e){/* ignore */ }
+            }
+
+            // 2) Forzar que body / scrollingElement sean focusables y enfocar
+            const scrollEl = document.scrollingElement || document.body || document.documentElement;
+            try {
+                if (scrollEl) {
+                    scrollEl.setAttribute && scrollEl.setAttribute('tabindex','-1');
+                    try { scrollEl.focus({preventScroll:true}); } catch(e) { scrollEl.focus(); }
+                }
+                document.documentElement.setAttribute && document.documentElement.setAttribute('tabindex','-1');
+                try { document.documentElement.focus({preventScroll:true}); } catch(e) {}
+            } catch(e){}
+
+            // 3) Pequeño "click" simulado para que sitios que capturan focus/inputs suelten el control
+            setTimeout(function() {
+                try {
+                    ['mousedown','mouseup','click'].forEach(function(type){
+                        const ev = new MouseEvent(type, {bubbles: true, cancelable: true, view: window});
+                        (document.body || document.documentElement).dispatchEvent(ev);
+                    });
+                } catch(e){}
+            }, 40);
+
+            // ✅ NO llamamos a Normal.feedkeys('cS') para no sobrescribir scrollStepSize
+        } catch (err) {
+            console.warn('[SurfingKeys] Error en el handler de .:', err);
+        }
+    });
+})();
+
+
+
+// Tema personalizado
+settings.theme = `
+.sk_theme {
+    font-family: Input Sans Condensed, Charcoal, sans-serif;
+    font-size: 10pt;
+    background: #24272e;
+    color: #abb2bf;
+}
+.sk_theme tbody { color: #fff; }
+.sk_theme input { color: #d0d0d0; }
+.sk_theme .url { color: #61afef; }
+.sk_theme .annotation { color: #56b6c2; }
+.sk_theme .omnibar_highlight { color: #528bff; }
+.sk_theme .omnibar_timestamp { color: #e5c07b; }
+.sk_theme .omnibar_visitcount { color: #98c379; }
+.sk_theme #sk_omnibarSearchResult ul li:nth-child(odd) { background: #303030; }
+.sk_theme #sk_omnibarSearchResult ul li.focused { background: #3e4452; }
+#sk_status, #sk_find { font-size: 20pt; }
+`;
+
+// set theme
+settings.theme = `
+.sk_theme {
+    font-family: Input Sans Condensed, Charcoal, sans-serif;
+    font-size: 10pt;
+    background: #24272e;
+    color: #abb2bf;
+}
+.sk_theme tbody {
+    color: #fff;
+}
+.sk_theme input {
+    color: #d0d0d0;
+}
+.sk_theme .url {
+    color: #61afef;
+}
+.sk_theme .annotation {
+    color: #56b6c2;
+}
+.sk_theme .omnibar_highlight {
+    color: #528bff;
+}
+.sk_theme .omnibar_timestamp {
+    color: #e5c07b;
+}
+.sk_theme .omnibar_visitcount {
+    color: #98c379;
+}
+.sk_theme #sk_omnibarSearchResult ul li:nth-child(odd) {
+    background: #303030;
+}
+.sk_theme #sk_omnibarSearchResult ul li.focused {
+    background: #3e4452;
+}
+#sk_status, #sk_find {
+    font-size: 20pt;
+}`;
+// click `Save` button to make above settings to take effect.</ctrl-i></ctrl-y>
