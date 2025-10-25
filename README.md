@@ -7,7 +7,7 @@ Esta configuración la llevo usando mucho tiempo sin ningún problema, esta prep
 ---
 ## 📋🛠️ REQUISITOS
 
-* Teclado español con numpad (tecla `º` = `SC029`).
+* Teclado español con Numpad.
 * AutoHotkey v1.x.
 * Surfingkeys extension. 
 * Adicionalmente Mute Tab extensión y configura `Ctrl` + `M` como atajo en Brave. Luego pulsando `Numpad /` hará la función de silenciar. Puedes usar la tecla `Numpad /` para cualquier programa/función siempre que configures tu atajo como `Ctrl` + `M`. 
