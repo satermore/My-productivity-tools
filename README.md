@@ -13,12 +13,37 @@ Esta configuración la llevo usando mucho tiempo sin ningún problema, esta prep
 
 ---
 
+## 🚀 Instalación y Configuración
+
+Para utilizar este sistema de productividad completo, necesitas instalar y configurar dos componentes principales: AutoHotkey para los atajos del sistema/ventanas, y SurfingKeys para la navegación web.
+
+### 1. AutoHotkey (AHK)
+
+1.  **Requisito:** Asegúrate de tener instalado [AutoHotkey v1.x](https://www.autohotkey.com/download/ahk-v1.zip).
+2.  **Ejecución:** Haz doble clic en el archivo `.ahk`. El script se ejecutará en segundo plano y su icono aparecerá en la bandeja del sistema (junto al reloj).
+3.  **Ejecución Automática:** Para que el script se inicie automáticamente con Windows, mueve los archivos `.ahk` a la carpeta de inicio de Windows (Win + R, luego escribe `shell:startup` y pulsa Enter).
+
+### 2. SurfingKeys (Extensión del Navegador)
+
+1.  **Instalación:** Instala la extensión SurfingKeys en tu navegador Brave, Chrome o compatible.
+2.  **Acceder a Opciones:** Ve a las opciones de la extensión (generalmente clic derecho en el icono de SurfingKeys -> Opciones, o navegando a `chrome://extensions/` y seleccionando detalles/opciones de la extensión).
+3.  **Si no deja editar activa las opciones de desarrollador de Brave.**
+4.  **Carga de Configuración:** En el panel de opciones de SurfingKeys, localiza la pestaña o el área para la configuración personalizada.
+5.  **Cargar Código:** Copia y pega el contenido completo del archivo `surfingkeysconfig.txt` en el cuadro de texto de configuración.
+6.  **Guardar:** Haz clic en el botón "Save" para aplicar los nuevos atajos.
+
+
+---
+
+## FUNCIONAMIENTO EXPLICADO
+
+
 ## 1. AutoHotkey (`braveconfig.ahk & miconfi.ahk`)
 
 El *script* de AutoHotkey está diseñado para mejorar la gestión de ventanas y pestañas del navegador Brave y para proporcionar atajos rápidos en Windows.
 remapeando la tecla `º` del teclado español y usando `1` y `2` para moverte hacia derecha o izquierda en las pestañas, o usando `º + q` para cambiar el foco a la otra ventana de brave.  
 Uso de **`Numpad 1-9`** para cambiar entre los programas de la barra de windows, haciendo más facil la navegación sin ratón. 
-Además incluye `Numpad /` para usarlo con la extension Mute Tab extension o similares haciendo más comodo el silenciar pestañas) 
+Además incluye `Numpad /` para usarlo con la extension Mute Tab o similares haciendo más comodo el silenciar pestañas).
 
 
 ### Atajos de Teclado (AHK)
