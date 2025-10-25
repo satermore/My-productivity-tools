@@ -1,11 +1,12 @@
-# Atajos de Productividad para Navegación y Windows
+# ⚡🖥️ Atajos de Productividad para Navegación y Windows
 
 Este proyecto combina un *script* de AutoHotkey (AHK) y un archivo de configuración para la extensión SurfingKeys para optimizar la navegación en Brave/Chrome y mejorar la interacción general con Windows mediante atajos de teclado personalizados.
 
 Esta configuración la llevo usando mucho tiempo sin ningún problema, esta preparada para ser editable con todo bien documentado para adaptarla a tus necesidades y gustos. 
 
 ---
-**Requisitos**
+## 📋🛠️ REQUISITOS
+
 * Teclado español (tecla `º` = `SC029`).
 * AutoHotkey v1.x.
 * Surfingkeys extension. 
@@ -13,7 +14,7 @@ Esta configuración la llevo usando mucho tiempo sin ningún problema, esta prep
 
 ---
 
-## 🚀 Instalación y Configuración
+## 🚀🚀 INSTALACIÓN Y CONFIGURACIÓN
 
 Para utilizar este sistema de productividad completo, necesitas instalar y configurar dos componentes principales: AutoHotkey para los atajos del sistema/ventanas, y SurfingKeys para la navegación web.
 
@@ -35,7 +36,7 @@ Para utilizar este sistema de productividad completo, necesitas instalar y confi
 
 ---
 
-## FUNCIONAMIENTO EXPLICADO
+## ⚙️⚙️ FUNCIONAMIENTO EXPLICADO
 
 
 ## 1. AutoHotkey (`braveconfig.ahk & miconfi.ahk`)
